@@ -51,4 +51,26 @@ Park.prototype.totalRevenueForOneYear = function() {
     return peryear * 5;
 };
 
+Park.prototype.removeBySpecies = function(species) {
+    let newlist = [];
+    for (let dino of this.dinosaurs) {
+        if (dino.species !== species) {
+            newlist.push(dino);
+        };
+    };
+    this.dinosaurs = newlist;
+};
+
+Park.prototype.getDietObject = function() {
+    let object = {};
+    for (let dino of this.dinosaurs) {
+        if (dino.diet in object) {
+            object[dino.diet]++
+        } else {
+            object[dino.diet] = 1
+        };
+    };
+    return object;
+};
+
 module.exports = Park;
